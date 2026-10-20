@@ -89,7 +89,7 @@ export default function LoginPage() {
           <input
             type="text"
             className={styles.input}
-            placeholder="Password"
+            placeholder="Full name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
