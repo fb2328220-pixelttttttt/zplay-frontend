@@ -1,0 +1,176 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f2f5;
+  padding: 16px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 20px 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.label {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.sub {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.errorBox {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  outline: none;
+  color: #1a1a2e;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #22c55e;
+}
+
+.input::placeholder {
+  color: #d1d5db;
+}
+
+.phoneWrapper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.phoneWrapper:focus-within {
+  border-color: #22c55e;
+}
+
+.countryCode {
+  padding: 14px 12px;
+  font-size: 15px;
+  color: #9ca3af;
+  background: #f9fafb;
+  border-right: 1.5px solid #e5e7eb;
+  user-select: none;
+  min-width: 52px;
+  text-align: center;
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 14px 14px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  color: #1a1a2e;
+  background: transparent;
+}
+
+.phoneInput::placeholder {
+  color: #d1d5db;
+}
+
+.registerBtn {
+  width: 100%;
+  padding: 15px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.registerBtn:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.registerBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.registerBtn:disabled {
+  background: #86efac;
+  cursor: not-allowed;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.footerText {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.footerLink {
+  font-size: 13px;
+  color: #22c55e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 40px 36px 32px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}

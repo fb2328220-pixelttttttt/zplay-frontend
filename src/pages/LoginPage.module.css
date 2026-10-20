@@ -1,0 +1,197 @@
+/* Mobile-first layout */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f2f5;
+  padding: 16px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 20px 24px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo */
+.logoSection {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 12px;
+}
+
+.signInLabel {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.welcomeTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.signInSub {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.5;
+}
+
+.brandLink {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.errorBox {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* Phone input row */
+.phoneWrapper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.phoneWrapper:focus-within {
+  border-color: #22c55e;
+}
+
+.countryCode {
+  padding: 14px 12px;
+  font-size: 15px;
+  color: #9ca3af;
+  background: #f9fafb;
+  border-right: 1.5px solid #e5e7eb;
+  user-select: none;
+  min-width: 52px;
+  text-align: center;
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 14px 14px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  color: #1a1a2e;
+  background: transparent;
+}
+
+.phoneInput::placeholder {
+  color: #d1d5db;
+}
+
+/* Regular input */
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  outline: none;
+  color: #1a1a2e;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #22c55e;
+}
+
+.input::placeholder {
+  color: #d1d5db;
+}
+
+/* Login button */
+.loginBtn {
+  width: 100%;
+  padding: 15px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.loginBtn:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.loginBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.loginBtn:disabled {
+  background: #86efac;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.footerLink {
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerLink:hover {
+  color: #22c55e;
+}
+
+.footerDivider {
+  color: #d1d5db;
+}
+
+/* Tablet+ */
+@media (min-width: 640px) {
+  .card {
+    padding: 40px 36px 32px;
+  }
+
+  .welcomeTitle {
+    font-size: 30px;
+  }
+}
