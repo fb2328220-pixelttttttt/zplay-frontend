@@ -62,7 +62,7 @@ export default function LoginPage() {
           <p className={styles.signInLabel}>Sign In.</p>
           <h1 className={styles.welcomeTitle}>Welcome Back!</h1>
           <p className={styles.signInSub}>
-            Sign in with your <span className={styles.brandLink}>Zplaybet account</span> credentials to continue.
+            Sign in with your <span className={styles.brandLink}>KEMERBet account</span> credentials to continue.
           </p>
         </div>
 
@@ -108,47 +108,52 @@ export default function LoginPage() {
   );
 }
 
-// ZPlay SVG Logo
+// KEMERBet Logo
 function ZPlayLogo() {
+  const letters = ['K', 'E', 'M', 'E', 'R'];
   return (
     <svg
-      viewBox="0 0 200 80"
+      viewBox="0 0 260 90"
       xmlns="http://www.w3.org/2000/svg"
-      width="180"
-      height="72"
-      aria-label="ZPlay logo"
+      width="240"
+      height="82"
+      aria-label="KEMERBet logo"
     >
-      <defs>
-        <linearGradient id="zGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#a855f7" />
-          <stop offset="50%" stopColor="#6366f1" />
-          <stop offset="100%" stopColor="#06b6d4" />
-        </linearGradient>
-        <linearGradient id="playGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#a855f7" />
-          <stop offset="100%" stopColor="#ec4899" />
-        </linearGradient>
-      </defs>
-      <text
-        x="10"
-        y="65"
-        fontSize="72"
-        fontWeight="900"
-        fontFamily="Arial Black, sans-serif"
-        fill="url(#zGrad)"
-      >
-        Z
-      </text>
-      <text
-        x="72"
-        y="60"
-        fontSize="38"
-        fontWeight="800"
-        fontFamily="Arial Black, sans-serif"
-        fill="url(#playGrad)"
-      >
-        PLAY
-      </text>
+      {/* Card tiles for K E M E R */}
+      {letters.map((letter, i) => (
+        <g key={i} transform={`translate(${i * 44}, 0)`}>
+          {/* White card background */}
+          <rect x="2" y="2" width="38" height="48" rx="6" ry="6" fill="white" />
+          {/* Green letter */}
+          <text
+            x="21"
+            y="36"
+            fontSize="28"
+            fontWeight="900"
+            fontFamily="Arial Black, sans-serif"
+            fill="#1a7a2e"
+            textAnchor="middle"
+          >
+            {letter}
+          </text>
+        </g>
+      ))}
+
+      {/* Yellow "Bet" tile */}
+      <g transform="translate(200, 30)">
+        <rect x="0" y="0" width="52" height="34" rx="6" ry="6" fill="#f5c400" />
+        <text
+          x="26"
+          y="24"
+          fontSize="20"
+          fontWeight="900"
+          fontFamily="Arial Black, sans-serif"
+          fill="#1a7a2e"
+          textAnchor="middle"
+        >
+          Bet
+        </text>
+      </g>
     </svg>
   );
 }
